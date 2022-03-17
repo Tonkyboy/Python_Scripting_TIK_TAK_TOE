@@ -8,6 +8,7 @@ BASIC_FIELDS = ascii_tik_tak_toe.BASIC_FIELDS
 
 
 def print_field(fields):
+    """Prints the Basic Field whit already placed X or O"""
     print("Gamefield:\n"
           "\n"
           "     |     |     \n"
@@ -23,16 +24,19 @@ def print_field(fields):
 
 
 def player_one():
+    """ Ask player one for his input. """
     placement = int(input("Player one place your next X on an empty field: "))
     return placement
 
 
 def player_two():
+    """ Ask player two for his input. """
     placement = int(input("Player two place your next O on an empty field: "))
     return placement
 
 
 def check_for_win(fields):
+    """ Check up if the there is a combination in the field that makes a player win."""
     if fields[0] == fields[1] == fields[2]:
         return fields[0]
     elif fields[3] == fields[4] == fields[5]:
@@ -52,6 +56,7 @@ def check_for_win(fields):
 
 
 def start_new():
+    """ Ask the players for a fast restart of the game. """
     restart = input("Want to start a new Game? Type Y or N: ").capitalize()
     if restart == "Y":
         return True
@@ -59,14 +64,14 @@ def start_new():
         return False
 
 
-
 def run_game():
-    # BASIC_FIELDS = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    #fields = BASIC_FIELDS
+    """ Runs the game until a player hase won or a player answered on restart with no"""
     fields = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     if start_new():
         print_field(fields=fields)
         counter = 0
+        """ Check up what player is currently on turn. Also checks if there is still a number in the field and none
+        X or O placed already."""
         while counter < 9:
             if counter % 2 == 0:
                 placement_number = player_one()
